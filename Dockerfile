@@ -67,13 +67,6 @@ RUN mkdir -p ${GOPATH}/src/github.com/pseudomuto/protoc-gen-doc && \
     go build -ldflags '-w -s' -o /protoc-gen-doc-out/protoc-gen-doc ./cmd/protoc-gen-doc && \
     install -Ds /protoc-gen-doc-out/protoc-gen-doc /out/usr/bin/protoc-gen-doc
 
-ARG PROTOC_GEN_FIELDMASK_VERSION
-RUN mkdir -p ${GOPATH}/src/github.com/TheThingsIndustries/protoc-gen-fieldmask && \
-    curl -sSL https://api.github.com/repos/TheThingsIndustries/protoc-gen-fieldmask/tarball/v${PROTOC_GEN_FIELDMASK_VERSION} | tar xz --strip 1 -C ${GOPATH}/src/github.com/TheThingsIndustries/protoc-gen-fieldmask && \
-    cd ${GOPATH}/src/github.com/TheThingsIndustries/protoc-gen-fieldmask && \
-    go build -ldflags '-w -s' -o /protoc-gen-fieldmask-out/protoc-gen-fieldmask . && \
-    install -Ds /protoc-gen-fieldmask-out/protoc-gen-fieldmask /out/usr/bin/protoc-gen-fieldmask
-
 ARG PROTOC_GEN_GO_GRPC_VERSION
 RUN mkdir -p ${GOPATH}/src/github.com/grpc/grpc-go && \
     curl -sSL https://api.github.com/repos/grpc/grpc-go/tarball/v${PROTOC_GEN_GO_GRPC_VERSION} | tar xz --strip 1 -C ${GOPATH}/src/github.com/grpc/grpc-go &&\
@@ -103,13 +96,6 @@ RUN mkdir -p ${GOPATH}/src/github.com/gogo/protobuf && \
     mkdir -p /out/usr/include/github.com/gogo/protobuf/protobuf/google/protobuf && \
     install -D $(find ./protobuf/google/protobuf -name '*.proto') -t /out/usr/include/github.com/gogo/protobuf/protobuf/google/protobuf && \
     install -D ./gogoproto/gogo.proto /out/usr/include/github.com/gogo/protobuf/gogoproto/gogo.proto
-
-ARG PROTOC_GEN_GOGOTTN_VERSION
-RUN mkdir -p ${GOPATH}/src/github.com/TheThingsIndustries/protoc-gen-gogottn && \
-    curl -sSL https://api.github.com/repos/TheThingsIndustries/protoc-gen-gogottn/tarball/v${PROTOC_GEN_GOGOTTN_VERSION} | tar xz --strip 1 -C ${GOPATH}/src/github.com/TheThingsIndustries/protoc-gen-gogottn && \
-    cd ${GOPATH}/src/github.com/TheThingsIndustries/protoc-gen-gogottn && \
-    go build -ldflags '-w -s' -o /protoc-gen-gogottn-out/protoc-gen-gogottn . && \
-    install -Ds /protoc-gen-gogottn-out/protoc-gen-gogottn /out/usr/bin/protoc-gen-gogottn
 
 ARG PROTOC_GEN_GOVALIDATORS_VERSION
 RUN mkdir -p ${GOPATH}/src/github.com/mwitkow/go-proto-validators && \
@@ -239,7 +225,7 @@ RUN find /out -name "*.a" -delete -or -name "*.la" -delete
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION}
 
 ARG TS_PROTOC_GEN_VERSION
-LABEL maintainer="Roman Volosatovs <roman@thethingsnetwork.org>"
+LABEL maintainer="Roman Volosatovs <rvolosatovs@riseup.net>"
 COPY --from=packer /out/ /
 RUN npm install -g ts-protoc-gen@${TS_PROTOC_GEN_VERSION} && npm cache clean --force
 RUN apk add --no-cache bash libstdc++ && \

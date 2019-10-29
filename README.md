@@ -1,7 +1,7 @@
-![](https://github.com/TheThingsIndustries/docker-protobuf/workflows/Docker%20Image/badge.svg)
+![](https://github.com/rvolosatovs/docker-protobuf/workflows/Docker%20Image/badge.svg)
 
 # Protocol Buffers + Docker
-A lightweight `protoc` Docker image.
+An all-inclusive `protoc` Docker image.
 It started out as https://github.com/znly/docker-protobuf fork, but grew into a stand-alone project.
 
 ## What's included:
@@ -24,8 +24,6 @@ It started out as https://github.com/znly/docker-protobuf fork, but grew into a 
 - [pseudomuto/protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc)
 - [stepancheg/grpc-rust](https://github.com/stepancheg/grpc-rust)
 - [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf)
-- [TheThingsIndustries/protoc-gen-fieldmask](https://github.com/TheThingsIndustries/protoc-gen-fieldmask)
-- [TheThingsIndustries/protoc-gen-gogottn](https://github.com/TheThingsIndustries/protoc-gen-gogottn)
 
 ## Supported languages
 - C
@@ -45,10 +43,10 @@ It started out as https://github.com/znly/docker-protobuf fork, but grew into a 
 
 ## Usage
 ```
-$ docker run --rm -v<some-path>:<some-path> -w<some-path> thethingsindustries/protoc [OPTION] PROTO_FILES
+$ docker run --rm -v<some-path>:<some-path> -w<some-path> rvolosatovs/protoc [OPTION] PROTO_FILES
 ```
 
 For help try:
 ```
-$ docker run --rm thethingsindustries/protoc --help
+$ docker run --rm rvolosatovs/protoc --help
 ```
