@@ -1,5 +1,7 @@
 ![](https://github.com/rvolosatovs/docker-protobuf/workflows/Docker%20Image/badge.svg)
 
+> NOTE: This project was earlier maintained by me at https://github.com/TheThingsIndustries/docker-protobuf , but since I have left the company it is now maintained in my own namespace. The original repository will not be maintained anymore.
+
 # Protocol Buffers + Docker
 An all-inclusive `protoc` Docker image.
 It started out as https://github.com/znly/docker-protobuf fork, but grew into a stand-alone project.
